@@ -128,3 +128,6 @@
     rgba(76, 26, 129, 1) 87%
   );
 }
+.errorMessage{
+  color: red;
+}
