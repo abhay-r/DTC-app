@@ -159,3 +159,15 @@
   list-style: decimal;
   font-weight: 400;
 }
+.solution{
+  color: black;
+  border: 1px solid #ced4da;
+    border-radius: .375rem;
+    padding: 20px;
+}
+.solution h3{
+  font-size: 20px;
+}
+.solution h2{
+  font-size: 26px;
+}

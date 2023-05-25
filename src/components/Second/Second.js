@@ -2,14 +2,14 @@ import React, { useEffect } from 'react'
 import Condition from './Condition/Condition'
 import './Second.css'
 import { Outlet, Route, Routes, useParams } from 'react-router-dom'
-const Second = ({data,issues,question}) => {
+const Second = ({data,issues,question, userResponse, setUserResponse}) => {
     // console.log(data['brand'])
     // console.log(index)
     // useEffect(()=>{
     //   setIndex(0)
     // })
     const id = useParams()
-    console.log(data)
+    // console.log(data)
   return (
     <div className='container2'>
         <div className="details">
@@ -41,7 +41,7 @@ const Second = ({data,issues,question}) => {
         <h2>{data['issues']}</h2>
         <hr />
     </div>
-      <Condition issues={issues} question={question} id={id}/>
+      <Condition issues={issues} question={question} id={id} userResponse={userResponse} setUserResponse={setUserResponse}/>
 
     <Outlet/>
   

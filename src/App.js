@@ -9,7 +9,7 @@ import Second from "./components/Second/Second";
 // import Condition from "./components/Second/Condition/Condition";
 import Login from "./components/Login/login";
 function App() {
-  const question = [
+  const question = {'No power': [
     {
       Que: "Are there any signs of power from the system?",
       heading: "Check the laptop for any signs of power (Est. 1 Minute)",
@@ -22,11 +22,13 @@ function App() {
       ],
       Note: "",
       important: "",
+      yes:['false','5',''],
+      No:[false,'1',''],
     },
     {
       Que: "Did the hard reset resolve the issue?",
       heading:
-        "Perform a hard reset on the laptop and use a known good outlet (Est. 2 Minute)",
+        "Use a known good outlet and perform a hard reset on the laptop (Est. 2 Minute)",
       subHeading: "",
       desc: [
         "Disconnect any external devices including the AC adapter",
@@ -40,7 +42,11 @@ function App() {
       Note: "Restart the computer (if the computer boots) to ensure the issue is resolved.",
       important:
         "Be sure the power button is held down for the entire 10 seconds (20 sec for Alienware) or the system may not fully reset. If the reset was performed correctly, the Dell logo screen should be seen before Windows starts to load",
+      yes:[true,'','Troubleshooting flow ended'],
+      No:[false,'2',''],
+    
     },
+
     {
       Que: "That was the result of M-BIST when run? MBIST Failed - Solid Amber Light, MBIST Pass - LED Light Off. If No LED select No else Yes",
       heading:'Perform M-BIST (Motherboard Built in Self Test) (Est. 1 Minute)',
@@ -51,7 +57,10 @@ function App() {
         "A solid amber light indicates a failure."
       ],
       Note:'',
-      important:''
+      important:'',
+      yes:['','',''],
+      No:[false,'3',''],
+  
     },
     {
       Que: "What is the type and location of the damage? If No damage select No",
@@ -66,7 +75,9 @@ function App() {
         "Check for debris. Ensure the ports and connectors are free from debris."
       ],
       Note:'For more information on -How to Identify AC Adapter Damage on Dell Systems – Refer',
-      important:''
+      important:'',
+      yes:['','',''],
+      No:[false,'4',''],
     },
     {
       Que: "Does the system power on with the known good adapter?",
@@ -77,9 +88,44 @@ function App() {
         "Attempt to power on the system with the known good AC adapter plugged in.",  
       ],
       Note:'For more information on -How to Identify AC Adapter Damage on Dell Systems – Refer',
-      important:''
+      important:'',
+      yes:['','',''],
+      No:[true,'','R1 Replace MotherBoard'],
     },
-  ];
+    {
+      Que: "Can The customer use the caps Lock key?",
+      heading:'VERIFY THAT THE CAPS LOCK KEY CAN BE TOGGLED BY THE USER.',
+      subHeading:'',
+      desc: [
+        "The system turns on, but there is no video or it can't get past the Dell screen { May power back off }.",
+        "The Caps Lock key won't light up while it is toggled.", 
+        "If the hard drive activity light is not flickering, it can be solidly on, consistently on, or off.",
+        ".Depending on the system, diagnostic codes may be present and vary. 1. The power button can flash a recurrent code. 2. On or off power button with a numeric code displayed in LEDs; this button may be on the back of some devices. 3. Repeating beeps that can be heard." 
+      ],
+      Note:'For more information on -How to Identify AC Adapter Damage on Dell Systems – Refer',
+      important:'',
+      yes:[false,'6',''],
+      No:[true,'','Tranfer to No Boot Troubleshooting'],
+      
+    },
+    {
+      Que: "Is the Dell logo visible to the customer?",
+      heading:'Check whether Dell logo is visible to the customer',
+      subHeading:'',
+      desc: [
+        "The system turns on with video and moves past the Dell screen before disappearing, but it does not enter Windows.",
+        "The Caps Lock key will light up when toggled.",
+        "The hard drive activity light may be on all the time, flicker, or be off.",
+        "On the screen, there can be an error message.",
+        "There won't be any diagnostic codes, and the power button will solidly illuminate in its normally operational colour.",
+         "Operating system sounds won't be audible."
+      ],
+      Note:'For more information on -How to Identify AC Adapter Damage on Dell Systems – Refer',
+      important:'',
+      yes:[true,'','Tranfer to No Boot Troubleshooting'],
+      No:[true,'','Tranfer to No Video and Distorted Video Troubleshooting'],
+    },
+  ]}
   // 'Do you find any FAN noise?',
   // 'Is system Hanging/Restarting?',
   // 'User shared video?',
@@ -90,6 +136,7 @@ function App() {
 
   const [issue, setIssue] = useState("");
   // const [index,setIndex] = useState(0)
+  const [userResponse, setUserResponse] = useState([]);
   const [display, setDisplay] = useState("none");
   const [data, setData] = useState({
     brand: "Dell",
@@ -111,7 +158,7 @@ function App() {
 
           <Route
             path="/:issue/:id"
-            element={<Second data={data} issues={issue} question={question} />}
+            element={<Second data={data} issues={issue} question={question} userResponse={userResponse} setUserResponse={setUserResponse} />}
           >
             {/* <Route path=':id' element={<Condition issues={issue} question={question} />}/> */}
           </Route>

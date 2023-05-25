@@ -4,7 +4,7 @@ import { Button, TextField } from "@mui/material";
 import styled from "@emotion/styled";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { useNavigate } from "react-router-dom";
-import leftLogo from "../../image/big-logo-png.jpeg";
+import leftLogo from '../../image/big-logo-png.jpeg'
 
 function Login({ setDisplay }) {
   const [username, setUsername] = useState("");

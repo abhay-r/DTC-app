@@ -29,8 +29,32 @@ def login():
     else:
         return dumps({'success': False})
 
+case_id = None
+
 @app.route('/submit-data', methods=['POST'])
 def submit_data():
+    global case_id
     data = request.json
+    case_id = data['case']
     troubleshooting_collection.insert_one(data)
     return jsonify({'success': True})
+
+@app.route('/submit-response', methods=['POST'])
+def submit_response():
+    response_data = request.json
+    global case_id
+    question = response_data['question']
+    response = response_data['response']
+
+    # Find the document with the matching case ID
+    document = troubleshooting_collection.find_one({'case': case_id})
+
+    if document:
+        # Update the document with the new question and response pair
+        document['questions_responses'] = document.get('questions_responses', {})
+        document['questions_responses'][question] = response
+        troubleshooting_collection.update_one({'case': case_id}, {'$set': {'questions_responses': document['questions_responses']}})
+        return jsonify({'success': True})
+    else:
+        return jsonify({'success': False, 'message': 'No document found with the provided case ID'})
+
