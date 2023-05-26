@@ -22,7 +22,7 @@ function App() {
       ],
       Note: "",
       important: "",
-      yes:['false','5',''],
+      yes:[false,'5',''],
       No:[false,'1',''],
     },
     {
@@ -105,7 +105,7 @@ function App() {
       Note:'For more information on -How to Identify AC Adapter Damage on Dell Systems – Refer',
       important:'',
       yes:[false,'6',''],
-      No:[true,'','Tranfer to No Boot Troubleshooting'],
+      No:[true,'','Transfer to No Boot Troubleshooting'],
       
     },
     {
@@ -122,10 +122,60 @@ function App() {
       ],
       Note:'For more information on -How to Identify AC Adapter Damage on Dell Systems – Refer',
       important:'',
-      yes:[true,'','Tranfer to No Boot Troubleshooting'],
-      No:[true,'','Tranfer to No Video and Distorted Video Troubleshooting'],
+      yes:[true,'','Transfer to No Boot Troubleshooting'],
+      No:[true,'','Transfer to No Video and Distorted Video Troubleshooting'],
     },
-  ]}
+  ],
+'No post':[
+  {
+    Que: "Are there any signs of power from the system?",
+    heading: "Check the laptop for any signs of power (Est. 1 Minute)",
+    subHeading: "Check for the below signs of power",
+    desc: [
+      "Anything being displayed on the screen",
+      "Power LED lights up (even if temporary)",
+      "Status LED lights up (even if temporary)",
+      "Any beep codes or fan sounds are heard",
+    ],
+    Note: "",
+    important: "",
+    yes:[false,'1',''],
+    No:[true,'','Transfer to No Power Troubleshooting'],
+  },
+  {
+    Que: "Is the customer able to turn the Caps Lock key LED ON/OFF when pressed?",
+    heading: "Check if the user is able to turn the Caps Lock key LED ON/OFF when pressed",
+    subHeading: "",
+    desc: [
+      "Power the system ON",
+      "Check for the light on CAPS LOCK key, also check if the user is able to toggle the CAPS LOCK key ON and OFF"
+
+    ],
+    Note: "",
+    important: "",
+    yes:[false,'2',''],
+    No:[false,'',''],
+  },
+  {
+
+  Que: "Does the customer see the Dell logo?",
+  heading:'Check if the system displays the Dell/Product/Company logo',
+  subHeading:'',
+  desc: [
+    "System powers on, has video and Dell/Product/Company screen is visible (Screen comes on and goes away) but not into Windows",
+    "Caps Lock key will illuminate when toggled",
+    "The hard drive activity light may be on all the time, flicker, or be off.",
+    "Hard Drive activity light may flicker, stay on or be off",
+    "On screen error message may be present",
+    "No diagnostic codes will be present and the power button will light up solid under its normal operating color",
+    "Operating System sounds will not be heard"
+     
+  ],
+  Note:'For more information on -How to Identify AC Adapter Damage on Dell Systems – Refer',
+  important:'',
+  yes:[true,'','Transfer to No Boot Troubleshooting'],
+  No:[true,'','Transfer to No Power Troubleshooting'],
+},]}
   // 'Do you find any FAN noise?',
   // 'Is system Hanging/Restarting?',
   // 'User shared video?',

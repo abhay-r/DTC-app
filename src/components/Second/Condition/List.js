@@ -73,7 +73,7 @@ const List = ({question,issues,id,setSol, userResponse, setUserResponse,ans, set
         if (checked.yes === true && question[ind.issue][id.id].yes[0] !== true) {
           navigate(`/${issues}/${parseInt(question[ind.issue][id.id].yes[1])}`);
         } else if (checked.no === true && question[ind.issue][id.id].No[0] !== true) {
-          navigate(`/${issues}/${parseInt(question[ind.issue][id.id].No[1]) + 1}`);
+          navigate(`/${issues}/${parseInt(question[ind.issue][id.id].No[1]) }`);
         }
       }
     } catch (error) {
